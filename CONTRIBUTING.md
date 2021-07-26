@@ -1,16 +1,16 @@
 # Contributing to `easyaccess`
 
 
-When contributing to this repository, please first discuss the change you wish to make via [issues](https://github.com/mgckind/easyaccess/issues),
+When contributing to this repository, please first discuss the change you wish to make via [issues](https://github.com/des-labs/easyaccess/issues),
 [email](mailto:mgckind@gmail.com), or any other method with the owners of this repository before making a change.
 
 Please note we have a [code of conduct](CODE_OF_CONDUCT.md) for this project, please follow it in all your interactions with the project.
 
 ## Reporting Bugs
 
-When creating a bug or an issue please include as many details as possible. Create your issues [here](https://github.com/mgckind/easyaccess/issues) and follow this steps:
+When creating a bug or an issue please include as many details as possible. Create your issues [here](https://github.com/des-labs/easyaccess/issues) and follow this steps:
 
-- Check [previous closed issues](https://github.com/mgckind/easyaccess/issues?q=is%3Aissue+is%3Aclosed) , [current open issues](https://github.com/mgckind/easyaccess/issues?q=is%3Aopen+is%3Aissue) or our FAQ for a list of common questions or previously solved problems
+- Search the [current issues page](https://github.com/des-labs/easyaccess/issues) **and the [old easyaccess repo issues](https://github.com/mgckind/easyaccess/issues) (include both open and closed issues)** or our FAQ for a list of common questions or previously solved problems
 - Use a clear and descriptive title for the issue to identify the problem.
 - Provide all information about OS
 - Provide information about the installation process (source, pip, conda, Docker, etc)
@@ -20,7 +20,7 @@ When creating a bug or an issue please include as many details as possible. Crea
 
 ## Other contributions
 
-All kind of contributions are welcome, from fixing bugs, resolving issues or suggesting features. Look at the [current issues](https://github.com/mgckind/easyaccess/issues) to see how you can contribute and provide help.
+All kind of contributions are welcome, from fixing bugs, resolving issues or suggesting features. Look at the [current issues](https://github.com/des-labs/easyaccess/issues) to see how you can contribute and provide help.
 
 ## Pull Request Process
 

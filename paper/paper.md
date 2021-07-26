@@ -32,7 +32,7 @@ bibliography: paper.bib
 # Summary
 
 `easyaccess` is an enhanced command line interpreter and Python package created to facilitate access to astronomical catalogs stored in SQL Databases. It provides a custom interface with custom commands and was specifically designed to access data from the [Dark Energy Survey](https://www.darkenergysurvey.org/) Oracle database, although it can easily be extended to another survey or SQL database. The package was completely written in [Python](https://www.python.org/) and supports customized addition of commands and functionalities.
-Visit [https://github.com/mgckind/easyaccess](https://github.com/mgckind/easyaccess) to view installation instructions, tutorials, and the Python source code for `easyaccess`.
+Visit [https://github.com/des-labs/easyaccess](https://github.com/des-labs/easyaccess) to view installation instructions, tutorials, and the Python source code for `easyaccess`.
 
 # The Dark Energy Survey
 
@@ -65,7 +65,7 @@ Users can also use `easyaccess` to submit and request cutouts around specific po
 
 ## Installation
 
-API documentation and installation instructions are available on the [online documentation](http://matias-ck.com/easyaccess/) or and the [Readme](https://github.com/mgckind/easyaccess) file on the repository
+API documentation and installation instructions are available on the [online documentation](https://des.ncsa.illinois.edu/desaccess/docs/easyaccess) or and the [Readme](https://github.com/des-labs/easyaccess) file on the repository
 
 
 # Acknowledgments

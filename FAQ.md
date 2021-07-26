@@ -1,6 +1,6 @@
 ## Frequently Asked Questions
 
-Here we collect a list of FAQ related to installation, usage, etc. Please refer to the [issues page](https://github.com/mgckind/easyaccess/issues) for more information.
+Here we collect a list of FAQ related to installation, usage, etc. Please refer to the [current issues page](https://github.com/des-labs/easyaccess/issues) **and the [old easyaccess repo issues](https://github.com/mgckind/easyaccess/issues) (include both open and closed issues)** for more information.
 
 - **Q: Installation with `pip` went smoothly, but where was `easyaccess` installed?**
   - A: When installed using pip, one can use the following: `pip show -f easyaccess` to check the installation folders.
