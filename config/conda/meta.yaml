@@ -20,24 +20,24 @@ requirements:
     - python
     - future >=0.15.0
     - requests
-    - pandas
+    - pandas >=0.14
     - termcolor >=1.1.0
-    - fitsio >=0.9.11
+    - fitsio ==1.0.5
     - oracle-instantclient ==11.2.0.4.0
-    - cx_oracle ==5.3
-    - numpy >=1.13.0
+    - cx_oracle ==8.0.1
+    - numpy ==1.19.2
     - python-dateutil
 
   run:
     - python
     - future >=0.15.0
     - requests
-    - pandas
+    - pandas >=0.14
     - termcolor >=1.1.0
-    - fitsio >=0.9.11
+    - fitsio ==1.0.5
     - oracle-instantclient ==11.2.0.4.0
-    - cx_oracle ==5.3
-    - numpy >=1.13.0
+    - cx_oracle ==8.0.1
+    - numpy ==1.19.2
     - python-dateutil
 
 test:
