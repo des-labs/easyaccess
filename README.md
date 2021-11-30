@@ -26,7 +26,7 @@ To create an account click [here](https://des.ncsa.illinois.edu/easyweb/signup/)
   - Note that cx_Oracle needs libbz2 on some Linux systems
 - [fitsio](https://github.com/esheldon/fitsio) == 1.0.5
 - [pandas](http://pandas.pydata.org/) >= 0.14
-- [numpy](https://docs.scipy.org/doc/numpy-1.15.1/reference/index.html)
+- [numpy](https://numpy.org/doc/1.19) == 1.19.2
 - [termcolor](https://pypi.python.org/pypi/termcolor)
 - [PyTables](http://pytables.github.io/) (optional, for hdf5 output)
 - [future](http://python-future.org/) (for python 2/3 compatibility)
