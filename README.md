@@ -1,7 +1,17 @@
-# easyaccess <a href="https://github.com/des-labs/easyaccess/releases/tag/1.4.8"> <img src="https://img.shields.io/badge/release-v1.4.8-blue.svg" alt="latest release" /></a> <a href="https://github.com/des-labs/easyaccess/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/license-NCSA%20License-blue.svg" alt="License" /> </a>  ![](https://img.shields.io/conda/v/mgckind/easyaccess.svg) [![DOI](http://joss.theoj.org/papers/10.21105/joss.01022/status.svg)](https://doi.org/10.21105/joss.01022)
+# easyaccess 
 
-Enhanced command line SQL interpreter client for astronomical surveys.
-![help_screen](data/help.gif)
+<a href="https://github.com/des-labs/easyaccess/releases/tag/1.4.8"> <img src="https://img.shields.io/badge/release-v1.4.8-blue.svg" alt="latest release" /></a> <a href="https://github.com/des-labs/easyaccess/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/license-NCSA%20License-blue.svg" alt="License" /> </a>  ![](https://img.shields.io/conda/v/mgckind/easyaccess.svg) [![DOI](http://joss.theoj.org/papers/10.21105/joss.01022/status.svg)](https://doi.org/10.21105/joss.01022)
+
+easyaccess: an enhanced command line SQL interpreter client for astronomical surveys.
+
+**Jump to:**
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [FAQ](#faq)
+       
+<img src="data/help.gif" alt="help_screen" style="width: 70%; margin: auto;">
 
 ## Description
 
