@@ -45,5 +45,5 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/des-labs/easyaccess',
     install_requires=['pandas >= 0.14', 'termcolor', 'fitsio == 1.0.5', 'setuptools',
-                      'cx_Oracle == 8.0.1', 'numpy == 1.19.2', 'future >= 0.15.0', 'requests'],
+                      'cx_Oracle == 8.0.1', 'numpy >= 1.19.2', 'future >= 0.15.0', 'requests'],
 )
