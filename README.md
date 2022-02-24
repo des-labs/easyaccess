@@ -1,8 +1,6 @@
 # easyaccess 
 
-<a href="https://github.com/des-labs/easyaccess/releases/tag/1.4.8"> <img src="https://img.shields.io/badge/release-v1.4.8-blue.svg" alt="latest release" /></a> <a href="https://github.com/des-labs/easyaccess/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/license-NCSA%20License-blue.svg" alt="License" /> </a>  ![](https://img.shields.io/conda/v/mgckind/easyaccess.svg) [![DOI](http://joss.theoj.org/papers/10.21105/joss.01022/status.svg)](https://doi.org/10.21105/joss.01022)
-
-easyaccess: an enhanced command line SQL interpreter client for astronomical surveys.
+**easyaccess**: an enhanced command line SQL interpreter client for astronomical surveys.
 
 **Jump to:**
 
@@ -71,6 +69,8 @@ archivePrefix = {arXiv},
       adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
 ```
+
+See also: Carrasco Kind et al., (2019). *easyaccess: Enhanced SQL command line interpreter for astronomical surveys*. **Journal of Open Source Software**, 4(33), 1022, https://doi.org/10.21105/joss.01022
 
 ## Installation
 
