@@ -99,7 +99,7 @@ Loading metadata into cache...
   \\_______//    DARK ENERGY SURVEY
    `-------`     DATA MANAGEMENT
 
-easyaccess 1.4.8-dev. The DESDM Database shell.
+easyaccess 1.4.10. The DESDM Database shell.
 _________
 DESDR ~> SELECT RA, DEC, MAG_AUTO_G, TILENAME FROM DR2_MAIN sample(0.001) FETCH FIRST 5 ROWS ONLY ;
 

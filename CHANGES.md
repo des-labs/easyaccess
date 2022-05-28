@@ -1,5 +1,11 @@
 # Changes
 
+## v.1.4.10
+#### 2022-MAY-28
+- Correct version inconsistency
+- Make requirements consistent between `setup.py` and `meta.yaml`
+- Change references to personal email addresses to the DES help request page
+ 
 ## v.1.4.8
 #### XXXX-XXX-XX
 - Fix issues with hanging after a Oracle Error (#PR 173 and issue #130)
