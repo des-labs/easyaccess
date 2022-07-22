@@ -887,7 +887,9 @@ Connected as {user} to {db}.
                         data.fillna(self.nullvalue, inplace=True)
                         for i, col in enumerate(data):
                             nt = eatypes.oracle2numpy(info[i])
-                            if nt != "":
+                            # we leave unicode as object because pandas data frames
+                            # do not support astype('U') on an object column
+                            if nt != "" and nt[0] != 'U':
                                 data[col] = data[col].astype(nt)
                         if extra_func is not None:
                             for kf in range(len(p_functions)):
