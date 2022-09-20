@@ -37,4 +37,12 @@ jobs:
       - name: test
         shell: bash -l {0}
         run: |
+          echo "
+[db-dessci]
+user = blah
+passwd = blahblah
+name = dessci
+server = desdb-sci.ncsa.illinois.edu
+port = 1521
+" > ~/.desservices.ini
           pytest -vvs tests
