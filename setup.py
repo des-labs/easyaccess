@@ -40,7 +40,10 @@ setup(
     scripts=['bin/easyaccess'],
     packages=pkgs,
     license='LICENSE.txt',
-    description='Easy access to the DES DB. Enhanced command line SQL interpreter client for DES',
+    description=(
+        'Easy access to the DES DB. Enhanced command line SQL '
+        'interpreter client for DES'
+    ),
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     url='https://github.com/des-labs/easyaccess',
