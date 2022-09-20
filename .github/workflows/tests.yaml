@@ -30,7 +30,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda config --set always_yes yes
-          mamba install des-easyaccess pytest fitsio==1.0.5 cx_Oracle==8.0.1
+          mamba install des-easyaccess pytest fitsio==1.0.5 cx_Oracle==8.0.1 pytables
           conda uninstall --force des-easyaccess
           python -m pip install --no-deps -e .
 
@@ -45,4 +45,5 @@ jobs:
           server = desdb-sci.ncsa.illinois.edu
           port = 1521
           " > ~/.desservices.ini
+          cat ~/.desservices.ini
           pytest -vvs tests
