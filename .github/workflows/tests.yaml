@@ -44,6 +44,20 @@ jobs:
           name = dessci
           server = desdb-sci.ncsa.illinois.edu
           port = 1521
+
+          [db-desoper]
+          user = blah
+          passwd = blahblah
+          name = desoper
+          server = desdb-oper.ncsa.illinois.edu
+          port = 1521
+
+          [db-desdr]
+          user = blah
+          passwd = blahblah
+          name = desdr
+          server = desdb-dr.ncsa.illinois.edu
+          port = 1521
           " > ~/.desservices.ini
           cat ~/.desservices.ini
           pytest -vv tests
