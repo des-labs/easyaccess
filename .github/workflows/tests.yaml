@@ -46,4 +46,4 @@ jobs:
           port = 1521
           " > ~/.desservices.ini
           cat ~/.desservices.ini
-          pytest -vvs tests
+          pytest -vv tests
