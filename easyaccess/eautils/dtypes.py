@@ -78,7 +78,7 @@ def oracle2numpy(desc):
         elif size == 8:
             return "f8"
     elif otype == or_s:
-        return "S" + str(size)
+        return "U" + str(size)
     else:
         # Ignore other Oracle types for now
         return ""
@@ -104,7 +104,7 @@ def oracle2fitsio(desc):
     scale = desc[5]
 
     if (otype == or_dt) or (otype == or_ts):
-        return "S50"
+        return "U50"
     else:
         return oracle2numpy(desc)
 
@@ -126,7 +126,8 @@ def numpy2oracle(dtype):
     kind = dtype.kind
     size = dtype.itemsize
 
-    if (kind == 'S'):
+    # if (kind == 'S'):
+    if (kind in ('S', 'U')):
         # string type
         return 'VARCHAR2(%d)' % size
     elif (kind == 'i' or kind == 'u'):

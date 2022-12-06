@@ -107,7 +107,7 @@ if __name__ == "__main__":
         print("*** TESTING COMMAND LINE INTERFACE ***")
         conn.drop_table(BASENAME)
         cmd = 'easyaccess --load_table %s' % filename
-        print cmd
+        print(cmd)
         sub.check_call(cmd, shell=True)
         df = conn.query_to_pandas(query)
         assert len(df) == nrows
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     nrows = 100000
     query = 'select RA,DEC from Y1A1_COADD_OBJECTS@DESSCI where rownum <= %s;' % nrows
     for ext in ('.fits', '.csv', '.tab'):
-        print ("*** DOWNLOADING EXISTING TABLE ***")
+        print("*** DOWNLOADING EXISTING TABLE ***")
         basename = BASENAME + '3'
         filename = basename + ext
         conn.query_and_save(query, filename)
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         print("*** TESTING COMMAND LINE INTERFACE ***")
         conn.drop_table(basename)
         cmd = 'easyaccess --load_table %s' % filename
-        print cmd
+        print(cmd)
         sub.check_call(cmd, shell=True)
         df = conn.query_to_pandas('select * from %s' % basename)
         assert len(df) == nrows
