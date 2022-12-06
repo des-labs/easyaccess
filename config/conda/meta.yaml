@@ -1,9 +1,9 @@
 package:
   name: easyaccess
-  version: "1.4.10"
+  version: "1.4.11"
 
 source:
-  git_rev: 1.4.10
+  git_rev: 1.4.11
   git_url: https://github.com/des-labs/easyaccess.git
 
 build:

@@ -1,5 +1,9 @@
 # Changes
 
+## v.1.4.11
+#### 2022-DEC-06
+- Use 'U' instead of 'S' for strings remove code that tried to decode object to utf-8. See pull request: [use unicode type, fix string writing](https://github.com/des-labs/easyaccess/pull/6)
+
 ## v.1.4.10
 #### 2022-MAY-28
 - Correct version inconsistency
