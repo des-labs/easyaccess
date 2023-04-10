@@ -47,7 +47,7 @@ setup(
     install_requires=[
         'pandas >= 0.14',
         'termcolor',
-        'fitsio == 1.0.5',
+        'fitsio == 1.1.8',
         'cx_Oracle == 8.0.1',
         'numpy >= 1.19.2',
         'future >= 0.15.0',

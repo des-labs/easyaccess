@@ -1,5 +1,9 @@
 # Changes
 
+## v.1.4.12
+#### 2023-APR-10
+- Update fitsio dependency to v1.1.8 to address a bug related to FITS file generation.
+
 ## v.1.4.11
 #### 2022-DEC-06
 - Use 'U' instead of 'S' for strings remove code that tried to decode object to utf-8. See pull request: [use unicode type, fix string writing](https://github.com/des-labs/easyaccess/pull/6)

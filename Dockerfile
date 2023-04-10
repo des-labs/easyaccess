@@ -22,6 +22,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   libopenmpi-dev      \
   openssh-client      \
   unzip               \
+  libbz2-dev          \
   && rm -rf /var/lib/apt/lists/*
 
 ARG UID=1001
