@@ -99,7 +99,7 @@ Loading metadata into cache...
   \\_______//    DARK ENERGY SURVEY
    `-------`     DATA MANAGEMENT
 
-easyaccess 1.4.12. The DESDM Database shell.
+easyaccess x.y.z. The DESDM Database shell.
 _________
 DESDR ~> SELECT RA, DEC, MAG_AUTO_G, TILENAME FROM DR2_MAIN sample(0.001) FETCH FIRST 5 ROWS ONLY ;
 
@@ -238,3 +238,40 @@ DESDB ~> config timeout show
 We have included a simplified UML diagram describing the architecture and dependencies of `easyaccess` which shows only the different methods for a given class and the name of the file hosting a given class. The main class, `easy_or()`, inherits all methods from all different subclasses, making this model flexible and extendable to other surveys or databases. These methods are then converted to command line commands and functions that can be called inside `easyaccess`. Given that there are some DES specific functions, we have moved DES methods into a separate class `DesActions()`.
 
 ![`easyaccess` architecture diagram](paper/classes_simple.png)
+
+## Release and publication
+
+### GitHub release
+
+Create a git tag with the semantic version number and make a release in the GitHub repo based on that git tag.
+
+### Release script
+
+Run the `release.sh` shell script to check that all steps have been executed.
+
+### PyPi
+
+*  Make sure version_tag in `./easyaccess/version.py` matches git repo tag
+
+   ```
+   version_tag = (x, y, z) 
+   ```
+* Make sure you have twine installed on system
+
+   ```
+   pip install twine
+   ```
+* In repository directory:
+
+   1. Create tar.gz source file:
+   ```
+   python3 setup.py sdist
+   ```
+   2. Create py2-py3 build wheel
+   ```
+   python3 setup.py bdist_wheel --universal
+   ```
+   3. Upload build and source files to PyPi
+   ```
+   twine upload dist/* 
+   ```
