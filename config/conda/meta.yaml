@@ -19,7 +19,7 @@ requirements:
   build:
     - pandas >= 0.14
     - termcolor >= 1.1.0
-    - fitsio == 1.0.5
+    - fitsio == 1.1.8
     - cx_oracle == 8.0.1
     - numpy == 1.19.2
     - future >= 0.15.0
@@ -31,7 +31,7 @@ requirements:
   run:
     - pandas >= 0.14
     - termcolor >= 1.1.0
-    - fitsio == 1.0.5
+    - fitsio == 1.1.8
     - cx_oracle == 8.0.1
     - numpy == 1.19.2
     - future >= 0.15.0
