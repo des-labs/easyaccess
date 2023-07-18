@@ -82,7 +82,7 @@ Running `easyaccess` in Docker is easy. Execute the command below to download an
 
 ```bash
 $ docker run -it --rm \
-    registry.gitlab.com/des-labs/kubernetes/easyaccess:latest \
+    hub.ncsa.illinois.edu/des-public/easyaccess:latest \
     easyaccess -s desdr
 
 Enter username : 
