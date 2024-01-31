@@ -132,7 +132,7 @@ class CommandActions(object):
 
     def do_online_tutorial(self, line):
         tut = webbrowser.open_new_tab(
-            'https://des.ncsa.illinois.edu/desaccess/docs/easyaccess')
+            'https://deslabs.ncsa.illinois.edu/desaccess/docs/easyaccess')
         del tut
 
     def _complete_tables(self, text):

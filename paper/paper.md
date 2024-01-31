@@ -65,7 +65,7 @@ Users can also use `easyaccess` to submit and request cutouts around specific po
 
 ## Installation
 
-API documentation and installation instructions are available on the [online documentation](https://des.ncsa.illinois.edu/desaccess/docs/easyaccess) or and the [Readme](https://github.com/des-labs/easyaccess) file on the repository
+API documentation and installation instructions are available on the [online documentation](https://deslabs.ncsa.illinois.edu/desaccess/docs/easyaccess) or and the [Readme](https://github.com/des-labs/easyaccess) file on the repository
 
 
 # Acknowledgments

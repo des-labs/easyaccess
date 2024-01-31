@@ -15,7 +15,7 @@
 
 `easyaccess` is an enhanced command line interpreter and Python package created to facilitate access to astronomical catalogs stored in SQL Databases. It provides a custom interface with custom commands and was specifically designed to access data from the Dark Energy Survey Oracle database, including autocompletion of tables, columns, users and commands, simple ways to upload and download tables using csv, fits and HDF5 formats, iterators, search and description of tables among others. It can easily be extended to another surveys or SQL databases. The package was completely written in Python and support customized addition of commands and functionalities.
 
-For a short tutorial check [here](https://des.ncsa.illinois.edu/desaccess/docs/easyaccess).
+For a short tutorial check [here](https://deslabs.ncsa.illinois.edu/desaccess/docs/easyaccess).
 
 ## DES DR1/DR2 access quickstart
 
@@ -82,7 +82,7 @@ Running `easyaccess` in Docker is easy. Execute the command below to download an
 
 ```bash
 $ docker run -it --rm \
-    registry.gitlab.com/des-labs/kubernetes/easyaccess:latest \
+    hub.ncsa.illinois.edu/des-public/easyaccess:latest \
     easyaccess -s desdr
 
 Enter username : 
@@ -147,7 +147,7 @@ python setup.py install
 
 ## Usage
 
-For a short tutorial and documentation see [here](https://des.ncsa.illinois.edu/desaccess/docs/easyaccess). Note that not all the features are available for public database use.
+For a short tutorial and documentation see [here](https://deslabs.ncsa.illinois.edu/desaccess/docs/easyaccess). Note that not all the features are available for public database use.
 
 ### Interactive interpreter
 
