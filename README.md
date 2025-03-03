@@ -110,7 +110,7 @@ For a short tutorial and documentation see [here](https://des-labs.github.io/eas
 
 ### Interactive interpreter
 
-Assuming that ```easyaccess``` is in your path, you can enter the interactive interpreter by calling ```easyaccess``` without any command line arguments:
+Assuming that `easyaccess` is in your path, you can enter the interactive interpreter by calling `easyaccess` without any command line arguments:
 
 ```bash
 easyaccess
@@ -118,7 +118,7 @@ easyaccess
 
 ### Command line usage
 
-Much of the functionality provided through the interpreter is also available directly from the command line. To see a list of command-line options, use the ```--help``` option
+Much of the functionality provided through the interpreter is also available directly from the command line. To see a list of command-line options, use the `--help` option
 
 ```bash
 easyaccess --help
@@ -168,7 +168,7 @@ The query format is the same as the interpreter, SQL statement must end with `;`
 
 ## Configuration
 
-The configuration file is located at ```$HOME/.easyaccess/config.ini``` but everything can be configured from inside easyaccess type:
+The configuration file is located at `$HOME/.easyaccess/config.ini` but everything can be configured from inside easyaccess type:
 
 ```bash
 DESDB ~> help config
