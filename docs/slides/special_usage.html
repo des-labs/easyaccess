@@ -1,0 +1,110 @@
+<style>
+#Special_usage li {
+    font-size: 1.5em;
+}
+
+#Special_usage .arrow {
+    color: #4F8A10;
+    border-radius: 10px
+    background-color: #DFF2BF;
+    font-size: 28x;
+    display:inline-block;
+    padding-left: 10px;
+    padding-right:  10px;
+}
+
+.commands {
+    color: cornflowerblue;
+    font-size: 0.9em !important;
+}
+
+.warning {
+    color: #9F6000;
+    border-radius: 10px;
+    background-color: #FEEFB3;
+    font-size: 0.8em !important;
+    display:inline-block;
+    padding-left: 10px;
+    padding-right:  10px;
+}
+
+
+</style>
+<section>
+<section data-menu-title="Special Usage" id="Special_usage">
+<h1>Advanced usage </h1>
+<ul class="myitems">
+    <li>View an execution plan for a query before running it</li>
+    <li>Upload tables and SQL queries from files</li>
+    <li>Download table to a file</li>
+    <li>Add comments to tables</li>
+    <li>Delete tables</li>
+</ul>
+
+<br /><br />
+<div class="arrow"> Press <i class="fa fa-arrow-circle-down" aria-hidden="true"> </i> to see the examples.</div>
+<p>All sections marked with a "&#9733" are DES specific and not public</p>
+</section>
+
+<section id="usage-plan">
+<h2>View Oracle execution plan for a query</h2>
+<p class="commands">DESDM ~> SELECT ... FROM ... WHERE ... ; < explain </p>
+<pre style="margin-top: 10px; margin-bottom: 0px; display:inline-block;"><code class='SQL'>select COADD_OBJECT_ID, RA, DEC,TILENAME from Y3A1_COADD_OBJECT_SUMMARY where rownum < 10; < explain
+select COADD_OBJECT_ID, RA, DEC,TILENAME from Y3A1_COADD_OBJECT_SUMMARY where COADD_OBJECT_ID=148672512; < explain
+select s.COADD_OBJECT_ID,s.MAG_APER_8_G, g.MAG_APER_8 from (select * from Y3A1_COADD_OBJECT_SUMMARY where rownum < 10) s, Y3A1_COADD_OBJECT_BAND_G g where s.COADD_OBJECT_ID = g.COADD_OBJECT_ID; < explain
+</code></pre>
+<img src="images/plan.gif" width=40% style="border:0">
+</section>
+
+<section id="usage-save">
+<h2>Save query results to a file</h2>
+<p class="commands">DESDM ~> SELECT ... FROM ... WHERE ... ; > file.csv </p>
+<p>Supported output files (.csv, .fits, .tab, .h5)</p>
+<pre style="margin-top: 10px; margin-bottom: 0px; display:inline-block;"><code class='SQL'>select COADD_OBJECT_ID,RA,DEC,MAG_AUTO_G,TILENAME from Y3A1_COADD_OBJECT_SUMMARY where rownum < 100; > y3a1.csv
+</code></pre>
+<img src="images/save.gif" width=40% style="border:0">
+</section>
+
+<section id="usage-upload">
+<h2>&#9733 Upload a table from a file</h2>
+<p class="commands">DESDM ~> load_table {file} --tablename {optional name} --chunksize {# of rows to load at a time}  </p>
+<p>Supported output files (.csv, .fits, .tab)</p>
+<img src="images/load.gif" width=47% style="border:0">
+</section>
+
+<section id="usage-comments">
+<h2>&#9733  Add comments or descriptions to a table or row</h2>
+<p class="commands">DESDM ~> add_comment table {TABLE} 'This is my table description'  <br> DESDM ~> add_comment column {TABLE}.{COLUMN} 'This is my comment'  </p>
+<img src="images/comments.gif" width=47% style="border:0">
+</section>
+
+<section id="usage-loadsql">
+<h2> Load SQL statements from a file</h2>
+<p class="commands">DESDM ~> loadsql {file.sql}  <br /> DESDM ~> @{file.sql}  </p>
+<pre style="font-size:0.8em"><code class='SQL'>-- SQL EXAMPLE
+-- Comments supported
+SELECT
+s.COADD_OBJECT_ID, -- id
+s.RA, -- RA
+s.DEC, -- DEC
+s.MAG_AUTO_G, -- g manitude
+g.MAG_APER_4 as aper_g, -- aper 4 mag from band g table
+r.MAG_APER_4 as aper_r,
+i.MAG_APER_4 as aper_i
+FROM
+(select *  from Y3A1_COADD_OBJECT_SUMMARY where rownum < 10) s, --subset from summary table
+Y3A1_COADD_OBJECT_BAND_G g, -- g band table wth all parameters
+Y3A1_COADD_OBJECT_BAND_R r,
+Y3A1_COADD_OBJECT_BAND_I i
+WHERE
+s.COADD_OBJECT_ID = g.COADD_OBJECT_ID and
+g.COADD_OBJECT_ID = r.COADD_OBJECT_ID and
+r.COADD_OBJECT_ID = i.COADD_OBJECT_ID;
+
+</pre></code>
+</section>
+<section id="usage-loadsql-an">
+<h2> Load SQL statements from a file</h2>
+<img src="images/sqlfile.gif" width=56% style="border:0">
+</section>
+</section>

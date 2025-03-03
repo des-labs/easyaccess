@@ -1,0 +1,87 @@
+<section>
+<h2>easyaccess python API</h2>
+<p> How to run easyaccess commands from inside a python script</p>
+
+<pre><code class='python'>
+
+
+# # easyaccess python API
+
+import easyaccess as ea
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+connection=ea.connect()
+
+
+# ###Using cursor
+
+cursor=connection.cursor() ##create a cursor object to handle the DB
+
+query='select * from mcarras2.mini_y1a1' ##query
+
+QQ=cursor.execute(query) #execute query
+
+QQ.description
+
+header = [item[0] for item in cursor.description]
+rows = cursor.fetchall()  ## Bring the data
+cols = np.array(zip(*rows))
+
+
+
+# ### Using easyaccess pre-defined
+
+
+DF=connection.query_to_pandas(query) #one line!
+
+pd.set_option('display.max_rows',12) #Display only
+
+sns.set_style("whitegrid")
+temp=sns.JointGrid("MAG_AUTO_G", "MAG_AUTO_R",DF,xlim=[20,27],ylim=[20,27])
+temp.plot_joint(sns.kdeplot,cmap='jet',clip=[(20,27),(20,27)])
+temp.plot_joint(plt.scatter, s= .3,color='black')
+temp.plot_marginals(sns.distplot, color='green',kde=False)
+
+
+sns.distplot(DF.MAG_AUTO_I[(DF.MAG_AUTO_I>15) & (DF.MAG_AUTO_I<28)],color='red')
+
+
+# ## Save to a file
+
+
+connection.query_and_save(query,'mytable.csv') #same formatting
+
+
+# ## Upload table
+
+
+connection.load_table('mytable.csv',name='test_api')
+
+connection.mytables()
+
+# ## Load SQL
+
+query2=connection.loadsql('test.sql')
+
+print query2
+
+# ## ping the DB
+connection.ping()
+cursor.execute('drop table test_api')
+
+connection.mytables()
+
+# ## Running easyaccess commands
+
+connection.onecmd('help')
+connection.onecmd('whoami')
+
+connection.close()
+
+connection.ping()
+
+</section>
+</code></pre>

@@ -1,0 +1,106 @@
+<section>
+<h1> Important configuration files </h1>
+<section data-menu-title="Config Files" id="Authentication">
+<h6> <font color="lightgreen"> .desservices.ini</font> : usually at $HOME/.desservices.ini  or defined in $DES_SERVICES</h6>
+<p style="font-size:20px"> Automatically created (if not found) by easyaccess (read/write by user only)</p>
+<h5 > Scroll to see whole content and press <i class="fa fa-arrow-circle-down" aria-hidden="true"> </i> to continue.
+</h5>
+<pre style="font-size:0.7em;"><code class="ini">
+;
+; DES services configuration
+; Please modify the passwords accordingly
+;
+
+[db-dessci]
+user = mcarras2
+passwd = ****
+name = dessci
+server = desdb.ncsa.illinois.edu
+port = 1521
+
+[db-desoper]
+user = mcarras2
+passwd = ****
+name = desoper
+server = desdb.ncsa.illinois.edu
+port = 1521
+
+
+[db-destest]
+user = mcarras2
+passwd = ****
+name = destest
+server = desdb.ncsa.illinois.edu
+port = 1521
+
+# DES DB Pubic
+[db-desdr]
+user = mcarras2
+passwd = *******
+name = desdr
+server = desdb-dr.ncsa.illinois.edu
+port = 1521
+
+</code></pre>
+</section>
+
+
+<section data-menu-title="Configuracion" id="Configuracion">
+<h6> <font color="lightgreen"> config.ini</font> : usually at $HOME/.easyaccess/config.ini</h6>
+<p style="font-size:20px"> Automatically created (if not found) by easyaccess </p>
+<p style="font-size:20px"> Configuration file for easyaccess (can be modified manually or from inside easyaccess) </p>
+<pre style="font-size:0.7em"><code class="ini" >
+#config.ini
+#
+# Easyaccess default parameters
+#
+# database        : Default is dessci, change to desoper, destest and others
+#                   Make sure the db-"database" section is in the .desservices.ini
+# editor          : Default editor to open from inside easyaccess if $EDITOR is not set
+# prefetch        : Prefetch number of rows to get from oracle (not the number of total rows)
+#                   This determine the number of trips to the DB to get all results from query
+#                   (default: 30000)
+# histcache       : The number of line in the history cache (when possible)
+# timeout         : The time in seconds before closing a connection for a query to print on screen
+#                   If the results are redirected to a file there is not a timeout (default 20 min)
+# nullvalue       : The value used to replace null or empty entries when printing into a file
+# outfile_max_mb  : Max size of each fits file in MB (default 1GB)
+# autocommit      : Auto commit changes in DB (default yes)
+# trim_whitespace : Trim whitespace from strings when uploading data to the DB (default yes)
+# desdm_coldefs   : Use DESDM DB compatible data types when uploading data (default yes)
+
+# Display default parameters
+#
+# color_terminal  : Display colors in terminal (default yes)
+# loading_bar     : Display a loading bar when querying the DB (default yes)
+# max_rows        : Max number of rows to display on the screen.
+#                   Doesn't apply to output files (default 2500)
+# width           : Width of the output format on the screen (default 1000)
+# max_columns     : Max number of columns to display on the screen.
+#                   Doesn't apply to output files (default 50)
+# max_colwidth    : Max number of characters per column at display.
+#                   Doesn't apply to output files (def. 500)
+
+[easyaccess]
+database = dessci
+editor = nano
+prefetch = 30000
+histcache = 5000
+timeout = 1200
+nullvalue = -9999
+outfile_max_mb = 1000
+autocommit = yes
+trim_whitespace = yes
+desdm_coldefs = yes
+
+[display]
+color_terminal = yes
+loading_bar = yes
+max_rows = 2500
+width = 1000
+max_columns = 50
+max_colwidth = 500
+
+</code></pre>
+</section>
+</section>

@@ -1,0 +1,165 @@
+<style>
+#Installation li {
+    font-size: 1.5em;
+}
+#Installation .code {
+    font-family: monospace;
+    font-size: 0.5em;
+    color: green;
+}
+
+#Installation .code:before {
+    font-family: FontAwesome;
+    content: "\f120";
+    display: inline-block;
+    padding-right: 2px;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.parent {
+  display: flex;
+  /*background-color: lightgrey;*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-flex;
+}
+
+.child {
+  /*background-color: gray;*/
+  width: 65%;
+  padding: 0px;
+  text-align: left;
+}
+
+
+</style>
+<section>
+<section data-menu-title="Installation" id="Installation">
+<h1>Installation <i class="fa fa-desktop"></i></h1>
+<h4> <i>Making things even easier. <i class="fa fa-linux " aria-hidden="true"></i> and
+     <i class="fa fa-apple" aria-hidden="true"></i> supported, <i class="fa fa-windows" aria-hidden="true"></i>
+      is work in progress.</i> </h4>
+<ul class="myitems">
+    <li> From source, clone  <a href=https://github.com/des-labs/easyaccess/><i class="fa fa-github" aria-hidden="true"></i>
+    </a> repo <span class="code"> python setup.py install</span> </li>
+    <li> Using pip or easy_install <span class="code"> pip install easyaccess==1.4.6</span></li>
+    <li> Install with <a href="http://conda.pydata.org/docs/install/quick.html" , target="_blank">conda</a>
+        <span class="code"> conda install easyaccess==1.4.6 -c mgckind</span></li>
+    <li> Pre-installed in a <a href="https://hub.docker.com/r/mgckind/easyaccess/" target="_blank"><i class="icon-docker"></i></a> docker image <span class="code"> docker run -it mgckind/easyaccess easyaccess</span></li>
+</ul>
+<br>
+<br>
+
+<h5 > Press <i class="fa fa-arrow-circle-down" aria-hidden="true"> </i> to see installation details.
+</h5>
+
+</section>
+
+<section data-markdown data-menu-title="Requirements" id="Installation-Requirements">
+
+## Requirements
+
+- Oracle Client > 11g.2 (External client library, not python)
+  Check [here](https://www.oracle.com/technetwork/database/database-technologies/instant-client/overview/index.html) for instructions on how to install this client.
+- [cx_Oracle](https://cx-oracle.readthedocs.io/en/latest/index.html)
+  Note that cx_Oracle needs libaio on some Linux systems
+  Note that cx_Oracle needs libbz2 on some Linux systems
+- [fitsio](https://github.com/esheldon/fitsio) >= 0.9.6
+- [pandas](http://pandas.pydata.org/) >= 0.14
+- [numpy](https://docs.scipy.org/doc/numpy-1.15.1/reference/index.html)
+- [termcolor](https://pypi.python.org/pypi/termcolor)
+- [PyTables](http://pytables.github.io/) (optional, for hdf5 output)
+- [future](http://python-future.org/) (for python 2/3 compatibility)
+- [requests](http://docs.python-requests.org/en/master/)
+- [gnureadline](https://github.com/ludwigschwardt/python-gnureadline) (optional, for better console behavior in OS X)
+- **Note that you need to install python-future for python2/3 compatibility**
+</section>
+
+<section data-menu-title="pip" id="Installation-pip">
+<h2>Source and pip installation</h2>
+<div class="parent">
+<p class="child"> To clone and install from <i class="fa fa-github" aria-hidden="true"></i> repository <a href="https://github.com/des-labs/easyaccess" target="_blank">https://github.com/des-labs/easyaccess</a></p>
+<div class="child">
+<pre style="margin-top: 10px; margin-bottom: 0px;">
+<code class="sh">git clone https://github.com/des-labs/easyaccess.git
+cd easyaccess
+python setup.py install
+</code>
+</pre>
+</div>
+<p class="child">instead of the last line:</p>
+<div class="child">
+<pre style="margin-top: 10px; margin-bottom: 0px;">
+<code class="sh">pip install -e .</code>
+</pre>
+</div>
+<p class="child">
+Installing using pip:
+</p>
+<div class="child">
+<pre style="margin-top: 10px; margin-bottom: 0px;">
+<code class="sh">pip install easyaccess</code>
+</pre>
+</div>
+</div>
+</section>
+
+<section data-menu-title="Conda" id="Installation-Conda">
+<h2> Conda installation</h2>
+<div class="parent">
+<p class="child">
+
+    For <i class="fa fa-apple " aria-hidden="true"></i> and <i class="fa fa-linux " aria-hidden="true"></i>
+    there is a conda package for easyaccess.<br><br>
+
+    Check <a href="http://conda.pydata.org/docs/install/quick.html" , target="_blank">here</a>
+    for instructions on how to install conda.<br><br>
+
+    easyaccess conda repository is <a href="https://anaconda.org/mgckind/easyaccess" , target="_blank">here</a>.
+    To install it :</p>
+<div class="child">
+<pre style="margin-top: 10px; margin-bottom: 0px;">
+<code class="sh">conda install -c mgckind easyccess
+</code></pre></div>
+
+<p class="child"> To create an isolated conda enviroment for easyaccess:</p>
+<div class="child">
+<pre style="margin-top: 10px; margin-bottom: 0px;">
+<code class="sh">conda create --name ea --yes easyaccess -c mgckind
+source activate ea
+easyaccess
+</code>
+</pre>
+</div>
+</section>
+
+<section data-menu-title="Docker" id="Installation-Docker">
+<h2>Using Docker
+</h2>
+<div class="parent">
+<h6 class="child"> Sometimes installation of the Oracle client can be tricky.
+    <a href="http://docker.com/" target="_blank">Docker</a> containers provide a
+    lightweight framework
+     to have an isolated environment with pre-installed software. easyaccess <i class="icon-docker"></i> repository is <a href="https://hub.docker.com/r/mgckind/easyaccess/" target="_blank"> here </a></h6>
+
+<h6 class="child"> To run easyaccess:</h6>
+<div class="child">
+<pre style="margin-top: 10px; margin-bottom: 0px;">
+<code class="sh">docker run -it mgckind/easyaccess easyaccess
+</code>
+</pre>
+</div>
+<h6 class="child"> To persist data in current working directory:</h6>
+<div class="child">
+<pre style="margin-top: 10px; margin-bottom: 0px;">
+<code class="sh">docker run -it -v $PWD:/home/jovyan/work mgckind/easyaccess easyaccess
+</code>
+</pre>
+</div>
+
+</div>
+</section>
+
+</section>

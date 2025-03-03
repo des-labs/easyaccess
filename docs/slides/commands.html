@@ -1,0 +1,756 @@
+<style>
+#Commands .arrow {
+    color: #4F8A10;
+    border-radius: 10px;
+    background-color: #DFF2BF;
+    font-size: 28px;
+    display:inline-block;
+    padding-left: 10px;
+    padding-right:  10px;
+}
+.commands {
+    color: cornflowerblue;
+    font-size: 0.9em !important;
+}
+</style>
+<section>
+<section data-menu-title="Commands" id="Commands">
+<h1> Inside easyaccess </h1>
+     <p>All commands with a "&#9733" are DES specific commands, and not public</p>
+    <br>
+<div class="arrow"> Press <i class="fa fa-arrow-circle-down" aria-hidden="true"> </i> to see the examples.</div>
+</section>
+
+
+<section>
+<h3> help (or ?) </h3>
+<p class="commands"> type help {command} for more info. e.g. DESDM ~> help prefetch </p>
+<pre style="font-size:0.7em"><code class="nohighlight">
+     \‾‾‾‾‾‾\
+  // / .    .\
+ // /   .    _\
+// /  .     / //
+\\ \     . / //
+ \\ \_____/ //
+  \\_______//    DARK ENERGY SURVEY
+   `‾‾‾‾‾‾‾´     DATA MANAGEMENT
+
+easyaccess 1.4.5. The DESDM Database shell.
+Connected as mcarras2 to dessci.
+** Type 'help' or '?' to list commands. **
+
+
+*General Commands* (type help <command>):
+================================================================================
+clear   edit  help           history  prefetch  version
+config  exit  help_function  import   shell
+
+
+*DB Commands*      (type help <command>):
+================================================================================
+add_comment     find_tables              myquota                 show_index
+append_table    find_tables_with_column  mytables                user_tables
+change_db       find_user                refresh_metadata_cache  whoami
+describe_table  load_table               set_password
+execproc        loadsql                  show_db
+
+*Default Input*
+================================================================================
+* To run SQL queries just add ; at the end of query
+* To write to a file  : select ... from ... where ... ; > filename
+* Supported file formats (.csv, .tab., .fits, .h5)
+* To check SQL syntax : select ... from ... where ... ; < check
+* To see the Oracle execution plan  : select ... from ... where ... ; < explain
+
+* To access an online tutorial type: online_tutorial
+</code></pre>
+</section>
+
+<section>
+<h3> config  </h3>
+<p class="commands"> e.g. to disable loading bar : DESDM ~> config loading_bar set no </p>
+<pre style="font-size:0.7em"><code class="nohighlight">
+DESDB ~> config
+
+        Change parameters from config file (config.ini). Smart autocompletion enabled
+
+        Usage:
+            - config <parameter> show : Shows current value of parameter
+            - config <parameter> set <value> : Sets parameter to given value
+            - config all show: Shows all parameters and their values
+            - config filepath: Prints the path to the config file
+
+        Parameters:
+            database          : Default DB to connect to
+            editor            : Editor for editing sql queries, see --> help edit
+            prefetch          : Number of rows prefetched by Oracle, see --> help prefetch
+            histcache         : Length of the history of commands
+            timeout           : Timeout for a query to be printed on the screen.
+                                Doesn't apply to output files
+            nullvalue         : value to replace Null entries when writing a file (default = -9999)
+            outfile_max_mb    : Max size of each fits file in MB
+            autocommit        : yes/no toggles the autocommit for DB changes (default is yes)
+            trim_whitespace   : Trim whitespace from strings when uploading data to the DB
+                                (default yes)
+            desdm_coldefs     : Use DESDM DB compatible data types when uploading data (default yes)
+
+            max_rows          : Max number of rows to display on the screen.
+                                Doesn't apply to output files
+            width             : Width of the output format on the screen
+            max_columns       : Max number of columns to display on the screen.
+                                Doesn't apply to output files
+            max_colwidth      : Max number of characters per column at display.
+                                Doesn't apply to output files
+            color_terminal    : yes/no toggles the color for terminal std output
+            loading_bar       : yes/no toggles the loading bar. Useful for background jobs
+</code></pre>
+</section>
+
+<section>
+<h3> describe_table </h3>
+    <p class="commands">Describes a specified table</p>
+<pre style="font-size:0.8em"><code class='typescript'>
+DESDB ~> describe_table Y3A1_COADD_OBJECT_SUMMARY
+
+    |☆             |  Ctrl-C to abort;  Rows : 181, Rows/sec: 1255
+Description of Y3A1_COADD_OBJECT_SUMMARY commented as: 'None'
+Estimated number of rows: 399578351
+
+                COLUMN_NAME      DATA_TYPE    DATA_FORMAT COMMENTS
+1            ALPHAWIN_J2000  BINARY_DOUBLE              8     None
+2                   A_IMAGE   BINARY_FLOAT              4     None
+3                         B   BINARY_FLOAT              4     None
+4                   B_IMAGE   BINARY_FLOAT              4     None
+5              CLASS_STAR_G   BINARY_FLOAT              4     None
+6              CLASS_STAR_I   BINARY_FLOAT              4     None
+7              CLASS_STAR_R   BINARY_FLOAT              4     None
+8              CLASS_STAR_Y   BINARY_FLOAT              4     None
+9              CLASS_STAR_Z   BINARY_FLOAT              4     None
+10          COADD_OBJECT_ID         NUMBER         (11,0)     None
+11                      DEC         NUMBER          (9,6)     None
+12           DELTAWIN_J2000  BINARY_DOUBLE              8     None
+13                EBV_SFD98         NUMBER         (10,6)     None
+14               ERRA_IMAGE   BINARY_FLOAT              4     None
+15               ERRB_IMAGE   BINARY_FLOAT              4     None
+16           ERRTHETA_IMAGE   BINARY_FLOAT              4     None
+17                  FLAGS_G         NUMBER          (3,0)     None
+18                  FLAGS_I         NUMBER          (3,0)     None
+19                  FLAGS_R         NUMBER          (3,0)     None
+20                  FLAGS_Y         NUMBER          (3,0)     None
+21                  FLAGS_Z         NUMBER          (3,0)     None
+22         FLUXERR_APER_8_G   BINARY_FLOAT              4     None
+23         FLUXERR_APER_8_I   BINARY_FLOAT              4     None
+24         FLUXERR_APER_8_R   BINARY_FLOAT              4     None
+25         FLUXERR_APER_8_Y   BINARY_FLOAT              4     None
+26         FLUXERR_APER_8_Z   BINARY_FLOAT              4     None
+27           FLUXERR_AUTO_G   BINARY_FLOAT              4     None
+28           FLUXERR_AUTO_I   BINARY_FLOAT              4     None
+29           FLUXERR_AUTO_R   BINARY_FLOAT              4     None
+30           FLUXERR_AUTO_Y   BINARY_FLOAT              4     None
+31           FLUXERR_AUTO_Z   BINARY_FLOAT              4     None
+32       FLUXERR_DETMODEL_G   BINARY_FLOAT              4     None
+33       FLUXERR_DETMODEL_I   BINARY_FLOAT              4     None
+34       FLUXERR_DETMODEL_R   BINARY_FLOAT              4     None
+35       FLUXERR_DETMODEL_Y   BINARY_FLOAT              4     None
+36       FLUXERR_DETMODEL_Z   BINARY_FLOAT              4     None
+37            FLUX_APER_8_G   BINARY_FLOAT              4     None
+38            FLUX_APER_8_I   BINARY_FLOAT              4     None
+39            FLUX_APER_8_R   BINARY_FLOAT              4     None
+40            FLUX_APER_8_Y   BINARY_FLOAT              4     None
+41            FLUX_APER_8_Z   BINARY_FLOAT              4     None
+42              FLUX_AUTO_G   BINARY_FLOAT              4     None
+43              FLUX_AUTO_I   BINARY_FLOAT              4     None
+44              FLUX_AUTO_R   BINARY_FLOAT              4     None
+45              FLUX_AUTO_Y   BINARY_FLOAT              4     None
+46              FLUX_AUTO_Z   BINARY_FLOAT              4     None
+47          FLUX_DETMODEL_G   BINARY_FLOAT              4     None
+48          FLUX_DETMODEL_I   BINARY_FLOAT              4     None
+49          FLUX_DETMODEL_R   BINARY_FLOAT              4     None
+50          FLUX_DETMODEL_Y   BINARY_FLOAT              4     None
+51          FLUX_DETMODEL_Z   BINARY_FLOAT              4     None
+52            FLUX_RADIUS_G   BINARY_FLOAT              4     None
+53            FLUX_RADIUS_I   BINARY_FLOAT              4     None
+54            FLUX_RADIUS_R   BINARY_FLOAT              4     None
+55            FLUX_RADIUS_Y   BINARY_FLOAT              4     None
+56            FLUX_RADIUS_Z   BINARY_FLOAT              4     None
+57           IMAFLAGS_ISO_G         NUMBER          (6,0)     None
+58           IMAFLAGS_ISO_I         NUMBER          (6,0)     None
+59           IMAFLAGS_ISO_R         NUMBER          (6,0)     None
+60           IMAFLAGS_ISO_Y         NUMBER          (6,0)     None
+61           IMAFLAGS_ISO_Z         NUMBER          (6,0)     None
+62              KRON_RADIUS   BINARY_FLOAT              4     None
+63                        L   BINARY_FLOAT              4     None
+64          MAGERR_APER_8_G   BINARY_FLOAT              4     None
+65          MAGERR_APER_8_I   BINARY_FLOAT              4     None
+66          MAGERR_APER_8_R   BINARY_FLOAT              4     None
+67          MAGERR_APER_8_Y   BINARY_FLOAT              4     None
+68          MAGERR_APER_8_Z   BINARY_FLOAT              4     None
+69            MAGERR_AUTO_G   BINARY_FLOAT              4     None
+70            MAGERR_AUTO_I   BINARY_FLOAT              4     None
+71            MAGERR_AUTO_R   BINARY_FLOAT              4     None
+72            MAGERR_AUTO_Y   BINARY_FLOAT              4     None
+73            MAGERR_AUTO_Z   BINARY_FLOAT              4     None
+74        MAGERR_DETMODEL_G   BINARY_FLOAT              4     None
+75        MAGERR_DETMODEL_I   BINARY_FLOAT              4     None
+76        MAGERR_DETMODEL_R   BINARY_FLOAT              4     None
+77        MAGERR_DETMODEL_Y   BINARY_FLOAT              4     None
+78        MAGERR_DETMODEL_Z   BINARY_FLOAT              4     None
+79             MAG_APER_8_G   BINARY_FLOAT              4     None
+80             MAG_APER_8_I   BINARY_FLOAT              4     None
+81             MAG_APER_8_R   BINARY_FLOAT              4     None
+82             MAG_APER_8_Y   BINARY_FLOAT              4     None
+83             MAG_APER_8_Z   BINARY_FLOAT              4     None
+84               MAG_AUTO_G   BINARY_FLOAT              4     None
+85               MAG_AUTO_I   BINARY_FLOAT              4     None
+86               MAG_AUTO_R   BINARY_FLOAT              4     None
+87               MAG_AUTO_Y   BINARY_FLOAT              4     None
+88               MAG_AUTO_Z   BINARY_FLOAT              4     None
+89           MAG_DETMODEL_G   BINARY_FLOAT              4     None
+90           MAG_DETMODEL_I   BINARY_FLOAT              4     None
+91           MAG_DETMODEL_R   BINARY_FLOAT              4     None
+92           MAG_DETMODEL_Y   BINARY_FLOAT              4     None
+93           MAG_DETMODEL_Z   BINARY_FLOAT              4     None
+94            MOLY_NUMBER_G         NUMBER         (20,0)     None
+95            MOLY_NUMBER_I         NUMBER         (20,0)     None
+96            MOLY_NUMBER_R         NUMBER         (20,0)     None
+97            MOLY_NUMBER_Y         NUMBER         (20,0)     None
+98            MOLY_NUMBER_Z         NUMBER         (20,0)     None
+99           MU_EFF_MODEL_G   BINARY_FLOAT              4     None
+100          MU_EFF_MODEL_I   BINARY_FLOAT              4     None
+101          MU_EFF_MODEL_R   BINARY_FLOAT              4     None
+102          MU_EFF_MODEL_Y   BINARY_FLOAT              4     None
+103          MU_EFF_MODEL_Z   BINARY_FLOAT              4     None
+104                MU_MAX_G   BINARY_FLOAT              4     None
+105                MU_MAX_I   BINARY_FLOAT              4     None
+106          MU_MAX_MODEL_G   BINARY_FLOAT              4     None
+107          MU_MAX_MODEL_I   BINARY_FLOAT              4     None
+108          MU_MAX_MODEL_R   BINARY_FLOAT              4     None
+109          MU_MAX_MODEL_Y   BINARY_FLOAT              4     None
+110          MU_MAX_MODEL_Z   BINARY_FLOAT              4     None
+111                MU_MAX_R   BINARY_FLOAT              4     None
+112                MU_MAX_Y   BINARY_FLOAT              4     None
+113                MU_MAX_Z   BINARY_FLOAT              4     None
+114         MU_MEAN_MODEL_G   BINARY_FLOAT              4     None
+115         MU_MEAN_MODEL_I   BINARY_FLOAT              4     None
+116         MU_MEAN_MODEL_R   BINARY_FLOAT              4     None
+117         MU_MEAN_MODEL_Y   BINARY_FLOAT              4     None
+118         MU_MEAN_MODEL_Z   BINARY_FLOAT              4     None
+119          MU_THRESHOLD_G   BINARY_FLOAT              4     None
+120          MU_THRESHOLD_I   BINARY_FLOAT              4     None
+121          MU_THRESHOLD_R   BINARY_FLOAT              4     None
+122          MU_THRESHOLD_Y   BINARY_FLOAT              4     None
+123          MU_THRESHOLD_Z   BINARY_FLOAT              4     None
+124               NEPOCHS_G         NUMBER          (6,0)     None
+125               NEPOCHS_I         NUMBER          (6,0)     None
+126               NEPOCHS_R         NUMBER          (6,0)     None
+127               NEPOCHS_Y         NUMBER          (6,0)     None
+128               NEPOCHS_Z         NUMBER          (6,0)     None
+129           NITER_MODEL_G         NUMBER          (5,0)     None
+130           NITER_MODEL_I         NUMBER          (5,0)     None
+131           NITER_MODEL_R         NUMBER          (5,0)     None
+132           NITER_MODEL_Y         NUMBER          (5,0)     None
+133           NITER_MODEL_Z         NUMBER          (5,0)     None
+134           OBJECT_NUMBER         NUMBER          (6,0)     None
+135           PARENT_NUMBER         NUMBER          (6,0)     None
+136          PFW_ATTEMPT_ID         NUMBER         (12,0)     None
+137                      RA         NUMBER          (9,6)     None
+138       SPREADERR_MODEL_G   BINARY_FLOAT              4     None
+139       SPREADERR_MODEL_I   BINARY_FLOAT              4     None
+140       SPREADERR_MODEL_R   BINARY_FLOAT              4     None
+141       SPREADERR_MODEL_Y   BINARY_FLOAT              4     None
+142       SPREADERR_MODEL_Z   BINARY_FLOAT              4     None
+143          SPREAD_MODEL_G   BINARY_FLOAT              4     None
+144          SPREAD_MODEL_I   BINARY_FLOAT              4     None
+145          SPREAD_MODEL_R   BINARY_FLOAT              4     None
+146          SPREAD_MODEL_Y   BINARY_FLOAT              4     None
+147          SPREAD_MODEL_Z   BINARY_FLOAT              4     None
+148             THETA_J2000   BINARY_FLOAT              4     None
+149                TILENAME       VARCHAR2  12 characters     None
+150      WAVG_FLUXERR_PSF_G   BINARY_FLOAT              4     None
+151      WAVG_FLUXERR_PSF_I   BINARY_FLOAT              4     None
+152      WAVG_FLUXERR_PSF_R   BINARY_FLOAT              4     None
+153      WAVG_FLUXERR_PSF_Y   BINARY_FLOAT              4     None
+154      WAVG_FLUXERR_PSF_Z   BINARY_FLOAT              4     None
+155         WAVG_FLUX_PSF_G   BINARY_FLOAT              4     None
+156         WAVG_FLUX_PSF_I   BINARY_FLOAT              4     None
+157         WAVG_FLUX_PSF_R   BINARY_FLOAT              4     None
+158         WAVG_FLUX_PSF_Y   BINARY_FLOAT              4     None
+159         WAVG_FLUX_PSF_Z   BINARY_FLOAT              4     None
+160       WAVG_MAGERR_PSF_G   BINARY_FLOAT              4     None
+161       WAVG_MAGERR_PSF_I   BINARY_FLOAT              4     None
+162       WAVG_MAGERR_PSF_R   BINARY_FLOAT              4     None
+163       WAVG_MAGERR_PSF_Y   BINARY_FLOAT              4     None
+164       WAVG_MAGERR_PSF_Z   BINARY_FLOAT              4     None
+165          WAVG_MAG_PSF_G   BINARY_FLOAT              4     None
+166          WAVG_MAG_PSF_I   BINARY_FLOAT              4     None
+167          WAVG_MAG_PSF_R   BINARY_FLOAT              4     None
+168          WAVG_MAG_PSF_Y   BINARY_FLOAT              4     None
+169          WAVG_MAG_PSF_Z   BINARY_FLOAT              4     None
+170  WAVG_SPREADERR_MODEL_G   BINARY_FLOAT              4     None
+171  WAVG_SPREADERR_MODEL_I   BINARY_FLOAT              4     None
+172  WAVG_SPREADERR_MODEL_R   BINARY_FLOAT              4     None
+173  WAVG_SPREADERR_MODEL_Y   BINARY_FLOAT              4     None
+174  WAVG_SPREADERR_MODEL_Z   BINARY_FLOAT              4     None
+175     WAVG_SPREAD_MODEL_G   BINARY_FLOAT              4     None
+176     WAVG_SPREAD_MODEL_I   BINARY_FLOAT              4     None
+177     WAVG_SPREAD_MODEL_R   BINARY_FLOAT              4     None
+178     WAVG_SPREAD_MODEL_Y   BINARY_FLOAT              4     None
+179     WAVG_SPREAD_MODEL_Z   BINARY_FLOAT              4     None
+180              XWIN_IMAGE  BINARY_DOUBLE              8     None
+181              YWIN_IMAGE  BINARY_DOUBLE              8     None
+
+</code></pre>
+</section>
+
+<section>
+<h3> find_tables </h3>
+    <p class="commands">Find tables inside the database using Oracle "Like" searching</p>
+<pre style="font-size:0.7em"><code class='typescript'>
+DESDB ~> find_tables %Y3A1%
+
+    |     ☆        |  Ctrl-C to abort;  Rows : 46, Rows/sec: 2
+
+46 rows in 18.91 seconds
+
+To select from a table use owner.table_name except for DESADMIN where only table_name is enough
+
+        OWNER                      TABLE_NAME
+1    BRPORTAL       Y3A1_GALAXY_TEMPLATE_TEST
+2     GRUENDL               Y3A1_NOAO_HANDOFF
+3     BECHTOL     Y3A1_STELLAR_TEMPLATE_MERGE
+4    MCARRAS2                       Y3A1_HPIX
+5        HLIN       Y3A1_LRGS_NOTY1_NBLUE3R21
+6        HLIN     Y3A1_LRGS_TRIMMED_NBLUE2R21
+7     BECHTOL      Y3A1_STELLAR_TEMPLATE_TEST
+8   DES_ADMIN                  Y3A1_BLACKLIST
+9   DES_ADMIN                    Y3A1_PROCTAG
+10  DES_ADMIN             Y3A1_COADDTILE_GEOM
+11  DES_ADMIN                 Y3A1_QA_SUMMARY
+12    ERYKOFF         Y3A1_FGCM_Y1Y2Y3_V1_0_1
+13       HLIN         Y3A1_LRGS_ALT_NBLUE3R21
+14    ERYKOFF            Y3A1_FGCM_V2_0_STARS
+15    ERYKOFF              Y3A1_FGCM_ALL_V2_5
+16    ERYKOFF     Y3A1_FGCM_V2_5_MODTRAN_PARS
+17    ERYKOFF     Y3A1_FGCM_Y1Y2Y3_V1_0_SNCAT
+18    ERYKOFF        Y3A1_FGCM_V2_0BETA_SNCAT
+19    ERYKOFF           Y3A1_FGCM_Y1Y2Y3_V1_0
+20    ERYKOFF              Y3A1_FGCM_ALL_V2_0
+21    ERYKOFF            Y3A1_FGCM_V2_5_STARS
+22       HLIN  Y3A1_LRGS_TRIMMED_NBLUE3R21_22
+23       HLIN     Y3A1_LRGS_TRIMMED_NBLUE3R21
+24  DES_ADMIN        Y3A1_COADD_OBJECT_BAND_G
+25  DES_ADMIN       Y3A1_COADD_OBJECT_SUMMARY
+26  DES_ADMIN                      Y3A1_IMAGE
+27  DES_ADMIN          Y3A1_FILE_ARCHIVE_INFO
+28  DES_ADMIN                      Y3A1_COADD
+29  DES_ADMIN                    Y3A1_CATALOG
+30  DES_ADMIN                   Y3A1_MISCFILE
+31  DES_ADMIN                  Y3A1_ZEROPOINT
+32  DES_ADMIN                   Y3A1_EXPOSURE
+33  DES_ADMIN              Y3A1_FINALCUT_HPIX
+34  DES_ADMIN            Y3A1_FINALCUT_OBJECT
+35  DES_ADMIN                Y3A1_WAVG_OCLINK
+36  DES_ADMIN        Y3A1_COADD_OBJECT_BAND_R
+37  DES_ADMIN                     Y3A1_CCDGON
+38  DES_ADMIN                    Y3A1_MOLYGON
+39  DES_ADMIN             Y3A1_MOLYGON_CCDGON
+40  DES_ADMIN       Y3A1_COADD_OBJECT_MOLYGON
+41  DES_ADMIN      Y3A1_COADD_OBJECT_HPIX_OLD
+42  DES_ADMIN        Y3A1_COADD_OBJECT_BAND_I
+43  DES_ADMIN          Y3A1_COADD_OBJECT_HPIX
+44  DES_ADMIN        Y3A1_COADD_OBJECT_BAND_Y
+45  DES_ADMIN  Y3A1_MISC_COADD_OBJECT_SUMMARY
+46  DES_ADMIN        Y3A1_COADD_OBJECT_BAND_Z
+</code></pre>
+    <p> For more info about searching syntax, go to <a href="https://docs.oracle.com/cd/B12037_01/server.101/b10759/conditions016.htm#i1034153">Oracle's documentation</a> </p>
+</section>
+
+<section>
+<h3> find_tables_with_column </h3>
+    <p class="commands">Find tables that contain a specific column</p>
+<pre style="font-size:0.8em"><code class='typescript'>
+DESDB ~> find_tables_with_column %MOF%
+
+    |            ☆ |  Ctrl-C to abort;  Rows : 88, Rows/sec: 4
+
+88 rows in 19.87 seconds
+
+                TABLE_NAME                COLUMN_NAME
+1    DES_ADMIN.Y1A1_PSF_QA             MOFFATBETA_MIN
+2    DES_ADMIN.Y1A1_PSF_QA            MOFFATBETA_MEAN
+3    DES_ADMIN.Y1A1_PSF_QA             MOFFATBETA_MAX
+4    DES_ADMIN.Y1A1_PSF_QA   MOFFATBETA_PIXELFREE_MIN
+5    DES_ADMIN.Y1A1_PSF_QA  MOFFATBETA_PIXELFREE_MEAN
+6    DES_ADMIN.Y1A1_PSF_QA   MOFFATBETA_PIXELFREE_MAX
+7   DES_ADMIN.Y1A1_MOF_D04                 FLUX_MOF_Z
+8   DES_ADMIN.Y1A1_MOF_D04              FLUXERR_MOF_G
+9   DES_ADMIN.Y1A1_MOF_D04              FLUXERR_MOF_R
+10  DES_ADMIN.Y1A1_MOF_D04              FLUXERR_MOF_I
+11  DES_ADMIN.Y1A1_MOF_D04              FLUXERR_MOF_Z
+12  DES_ADMIN.Y1A1_MOF_D04               CM_MOF_FLAGS
+13  DES_ADMIN.Y1A1_MOF_D04             CM_MOF_NUM_ITR
+14  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_1
+15  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_2
+16  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_3
+17  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_4
+18  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_5
+19  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_6
+20  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_7
+21  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_8
+22  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ABS_DIFF_9
+23  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_1
+24  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_2
+25  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_3
+26  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_4
+27  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_5
+28  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_6
+29  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_7
+30  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_8
+31  DES_ADMIN.Y1A1_MOF_D04         CM_MOF_FRAC_DIFF_9
+32  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_1
+33  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_2
+34  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_3
+35  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_4
+36  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_5
+37  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_6
+38  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_7
+39  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_8
+40  DES_ADMIN.Y1A1_MOF_D04          CM_MOF_ERR_DIFF_9
+41  DES_ADMIN.Y1A1_MOF_D04                  MAG_MOF_G
+42  DES_ADMIN.Y1A1_MOF_D04                  MAG_MOF_R
+43  DES_ADMIN.Y1A1_MOF_D04                  MAG_MOF_I
+44  DES_ADMIN.Y1A1_MOF_D04                  MAG_MOF_Z
+45  DES_ADMIN.Y1A1_MOF_D04                 FLUX_MOF_G
+46  DES_ADMIN.Y1A1_MOF_D04                 FLUX_MOF_R
+47  DES_ADMIN.Y1A1_MOF_D04                 FLUX_MOF_I
+48      DES_ADMIN.Y1A1_MOF               CM_MOF_FLAGS
+49      DES_ADMIN.Y1A1_MOF             CM_MOF_NUM_ITR
+50      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_1
+51      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_2
+52      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_3
+53      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_4
+54      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_5
+55      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_6
+56      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_7
+57      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_8
+58      DES_ADMIN.Y1A1_MOF          CM_MOF_ABS_DIFF_9
+59      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_1
+60      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_2
+61      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_3
+62      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_4
+63      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_5
+64      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_6
+65      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_7
+66      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_8
+67      DES_ADMIN.Y1A1_MOF         CM_MOF_FRAC_DIFF_9
+68      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_1
+69      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_2
+70      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_3
+71      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_4
+72      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_5
+73      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_6
+74      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_7
+75      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_8
+76      DES_ADMIN.Y1A1_MOF          CM_MOF_ERR_DIFF_9
+77      DES_ADMIN.Y1A1_MOF                  MAG_MOF_G
+78      DES_ADMIN.Y1A1_MOF                  MAG_MOF_R
+79      DES_ADMIN.Y1A1_MOF                  MAG_MOF_I
+80      DES_ADMIN.Y1A1_MOF                  MAG_MOF_Z
+81      DES_ADMIN.Y1A1_MOF                 FLUX_MOF_G
+82      DES_ADMIN.Y1A1_MOF                 FLUX_MOF_R
+83      DES_ADMIN.Y1A1_MOF                 FLUX_MOF_I
+84      DES_ADMIN.Y1A1_MOF                 FLUX_MOF_Z
+85      DES_ADMIN.Y1A1_MOF              FLUXERR_MOF_G
+86      DES_ADMIN.Y1A1_MOF              FLUXERR_MOF_R
+87      DES_ADMIN.Y1A1_MOF              FLUXERR_MOF_I
+88      DES_ADMIN.Y1A1_MOF              FLUXERR_MOF_Z
+</code></pre>
+</section>
+
+<section>
+<h3> &#9733 find_user, &#9733 user_tables </h3>
+    <p class="commands">Find users in the database and the tables those users have created</p>
+<pre style="font-size:0.8em"><code class='typescript'>
+_________
+DESDB ~> find_user sevilla
+
+    |☆             |  Ctrl-C to abort;  Rows : 1, Rows/sec: 7
+   USERNAME               EMAIL FIRSTNAME LASTNAME
+1  nsevilla  nsevilla@gmail.com   Ignacio  Sevilla
+
+_________
+DESDB ~> user_tables nsevilla
+
+
+Public tables from NSEVILLA
+                                 0
+0           GOLDSPEC_MATCHES_1_0_1
+1           LSS_SAMPLE_MOF_NOPZCUT
+2               NGMIX_MOF_Y1A1_D04
+3       NGMIX_MOF_Y1A1_S82_PHOTEXT
+4      NGMIX_MOF_Y1A1_WIDE_PHOTEXT
+5              PHOTOZ_TPL_Y1G103_0
+6              PHOTOZ_TPL_Y1G103_1
+7               PHOTOZ_TPL_Y1MOF_1
+8   Y1A1_COADD_OBJECTS_CLASSIFIERS
+9        Y1A1_GOLD_1_0_1_D04_NOSNS
+10             Y1A1_GOLD_1_0_1_D10
+11           Y1A1_GOLD_1_0_1_DFULL
+12             Y1A1_GOLD_1_0_2_D04
+13             Y1A1_GOLD_1_0_2_D10
+14           Y1A1_GOLD_1_0_2_DFULL
+15             Y1A1_GOLD_1_0_3_D04
+16             Y1A1_GOLD_1_0_3_D10
+17           Y1A1_GOLD_1_0_3_DFULL
+18               Y1A1_MOF_D04_SAVE
+19                     Y1A1_MOF_NN
+20                 Y1A1_MOF_SAMPLE
+21                   Y1A1_MOF_SAVE
+22                     Y3_MOF_TEST
+_________
+DESDB ~>
+</code></pre>
+</section>
+
+<section>
+<h3> whoami, &#9733 myquota, &#9733 mytables</h3>
+    <p class="commands">Displays user information, quota, and tables</p>
+<pre style="font-size:0.8em"><code class='typescript'>
+DESDB ~> whoami
+
+ Rows : 1, Rows/sec: 12
+   USERNAME                       EMAIL   FIRST  LAST LAST_PASSWD_CHANGE       CREATED
+1  mcarras2  mcarras2@ncsa.illinois.edu  Matias  Kind        32 days ago  962 days ago
+
+_________
+DESDB ~> myquota
+
+    |   ☆          |  Ctrl-C to abort;  Rows : 1, Rows/sec: 2
+  TABLESPACE_NAME  GBYTES_USED  GBYTES_LEFT
+1           USERS    96.103882   153.896118
+
+_________
+DESDB ~> mytables
+
+    |☆             |  Ctrl-C to abort;  Rows : 16, Rows/sec: 5
+List of my tables
+
+                 TABLE_NAME  SIZE_GBYTES
+1                DEMO_TABLE     0.000061
+2                 DEMO_TEST     0.000061
+3           FGOTTENMETADATA     0.002930
+4                 MINI_Y1A1     0.001953
+5                   MYTABLE     0.000427
+6               SAMPLE_Y1A1     0.022461
+7               SPARSE_DICT     0.020508
+8              SPEC_MATCHED     0.022461
+9          SVA1_GOLD_PHOTOZ     1.750000
+10     SVA1_GOLD_PHOTOZ_PDF    17.385742
+11  SVA1_GOLD_PHOTOZ_SPARSE     4.067383
+12            TPZ_SVA1_GOLD     0.726562
+13        Y1A1_COADD_PHOTOZ     4.879883
+14                Y1A1_HPIX     4.758789
+15                Y3A1_HPIX    15.544922
+16                    ZBINS     0.000122
+
+_________
+DESDB ~>
+</code></pre>
+
+</section>
+
+
+
+
+
+
+<section>
+<h3> &#9733 change_db, show_db</h3>
+     <p class="commands">Display the current database you're in or change to a different database</p>
+<pre style="font-size:0.8em"><code class='typescript'>
+_________
+DESDB ~> show_db
+
+
+user: MCARRAS2
+db  : DESSCI
+host: DESDB.NCSA.UIUC.EDU
+
+Personal links:
+
+   OWNER  DB_LINK  USERNAME  HOST  CREATED
+No rows selected
+
+_________
+DESDB ~> change_db desoper
+Connecting to DB ** desoper ** ...
+
+Run refresh_metadata_cache to reload the auto-completion metatada
+_________
+DESDB ~> show_db
+
+
+user: MCARRAS2
+db  : DESOPER
+host: LEOVIP148.NCSA.UIUC.EDU
+
+Personal links:
+
+   OWNER  DB_LINK  USERNAME  HOST  CREATED
+No rows selected
+
+_________
+DESDB ~> change_db oldsci
+Connecting to DB ** oldsci ** ...
+
+Run refresh_metadata_cache to reload the auto-completion metatada
+_________
+DESDB ~> show_db
+
+
+user: MCARRAS2
+db  : OLDSCI
+host: LEOVIP148.NCSA.ILLINOIS.EDU
+
+Personal links:
+
+   OWNER  DB_LINK  USERNAME  HOST  CREATED
+No rows selected
+
+_________
+DESDB ~> change_db dummy
+DB dummy does not exist or you don't have access to it
+_________
+DESDB ~> change_db dessci
+Connecting to DB ** dessci ** ...
+
+Run refresh_metadata_cache to reload the auto-completion metatada
+_________
+DESDB ~>
+
+</code></pre>
+</section>
+
+<section>
+<h3> refresh_metadata_cache, set_password</h3>
+<p class="commands">  refresh_metadata_cache is used to load metadata into the cache for auto-completion features</p>
+<pre style="font-size:0.8em"><code class='typescript'>
+_________
+DESDB ~> refresh_metadata_cache
+Loading metadata into cache...
+_________
+DESDB ~> set_password
+
+Enter new password:
+Re-Enter new password:
+
+
+    |☆             |  Ctrl-C to abort; Password changed in DESSCI
+
+Password changed in DESSCI
+
+Password changed in DESOPER
+
+_________
+DESDB ~>
+
+</code></pre>
+</section>
+
+
+<section>
+<h3> show_index</h3>
+<p class="commands">Describes the indices in a TABLE as column_name, oracle_Type, date_length, comments</p>
+<pre style="font-size:0.8em"><code class='typescript'>
+_________
+DESDB ~> show_index Y3A1_COADD_OBJECT_SUMMARY
+
+    |            ☆ |  Ctrl-C to abort;  Rows : 63, Rows/sec: 47
+
+63 rows in 1.33 seconds
+
+                   TABLE_NAME          COLUMN_NAME INDEX_TYPE                    INDEX_NAME
+1   Y3A1_COADD_OBJECT_SUMMARY         CLASS_STAR_G     BITMAP         Y3A1_CLASS_STAR_G_BMX
+2   Y3A1_COADD_OBJECT_SUMMARY         CLASS_STAR_I     BITMAP         Y3A1_CLASS_STAR_I_BMX
+3   Y3A1_COADD_OBJECT_SUMMARY         CLASS_STAR_R     BITMAP         Y3A1_CLASS_STAR_R_BMX
+4   Y3A1_COADD_OBJECT_SUMMARY         CLASS_STAR_Y     BITMAP         Y3A1_CLASS_STAR_Y_BMX
+5   Y3A1_COADD_OBJECT_SUMMARY         CLASS_STAR_Z     BITMAP         Y3A1_CLASS_STAR_Z_BMX
+6   Y3A1_COADD_OBJECT_SUMMARY      COADD_OBJECT_ID     BITMAP               Y3A1_COS_ID_BMX
+7   Y3A1_COADD_OBJECT_SUMMARY      COADD_OBJECT_ID     NORMAL            Y3A1_COS_RADEC_BMX
+8   Y3A1_COADD_OBJECT_SUMMARY                  DEC     BITMAP              Y3A1_COS_DEC_BMX
+9   Y3A1_COADD_OBJECT_SUMMARY                  DEC     NORMAL            Y3A1_COS_RADEC_BMX
+10  Y3A1_COADD_OBJECT_SUMMARY              FLAGS_G     BITMAP              Y3A1_FLAGS_G_BMX
+11  Y3A1_COADD_OBJECT_SUMMARY              FLAGS_I     BITMAP              Y3A1_FLAGS_I_BMX
+12  Y3A1_COADD_OBJECT_SUMMARY              FLAGS_R     BITMAP              Y3A1_FLAGS_R_BMX
+13  Y3A1_COADD_OBJECT_SUMMARY              FLAGS_Y     BITMAP              Y3A1_FLAGS_Y_BMX
+14  Y3A1_COADD_OBJECT_SUMMARY              FLAGS_Z     BITMAP              Y3A1_FLAGS_Z_BMX
+15  Y3A1_COADD_OBJECT_SUMMARY          FLUX_AUTO_G     BITMAP          Y3A1_FLUX_AUTO_G_BMX
+16  Y3A1_COADD_OBJECT_SUMMARY          FLUX_AUTO_I     BITMAP          Y3A1_FLUX_AUTO_I_BMX
+17  Y3A1_COADD_OBJECT_SUMMARY          FLUX_AUTO_R     BITMAP          Y3A1_FLUX_AUTO_R_BMX
+18  Y3A1_COADD_OBJECT_SUMMARY          FLUX_AUTO_Y     BITMAP          Y3A1_FLUX_AUTO_Y_BMX
+19  Y3A1_COADD_OBJECT_SUMMARY          FLUX_AUTO_Z     BITMAP          Y3A1_FLUX_AUTO_Z_BMX
+20  Y3A1_COADD_OBJECT_SUMMARY       IMAFLAGS_ISO_G     BITMAP       Y3A1_IMAFLAGS_ISO_G_BMX
+21  Y3A1_COADD_OBJECT_SUMMARY       IMAFLAGS_ISO_I     BITMAP       Y3A1_IMAFLAGS_ISO_I_BMX
+22  Y3A1_COADD_OBJECT_SUMMARY       IMAFLAGS_ISO_R     BITMAP       Y3A1_IMAFLAGS_ISO_R_BMX
+23  Y3A1_COADD_OBJECT_SUMMARY       IMAFLAGS_ISO_Y     BITMAP       Y3A1_IMAFLAGS_ISO_Y_BMX
+24  Y3A1_COADD_OBJECT_SUMMARY       IMAFLAGS_ISO_Z     BITMAP       Y3A1_IMAFLAGS_ISO_Z_BMX
+25  Y3A1_COADD_OBJECT_SUMMARY        MAGERR_AUTO_G     BITMAP        Y3A1_MAGERR_AUTO_G_BMX
+26  Y3A1_COADD_OBJECT_SUMMARY        MAGERR_AUTO_I     BITMAP        Y3A1_MAGERR_AUTO_I_BMX
+27  Y3A1_COADD_OBJECT_SUMMARY        MAGERR_AUTO_R     BITMAP        Y3A1_MAGERR_AUTO_R_BMX
+28  Y3A1_COADD_OBJECT_SUMMARY        MAGERR_AUTO_Y     BITMAP        Y3A1_MAGERR_AUTO_Y_BMX
+29  Y3A1_COADD_OBJECT_SUMMARY        MAGERR_AUTO_Z     BITMAP        Y3A1_MAGERR_AUTO_Z_BMX
+30  Y3A1_COADD_OBJECT_SUMMARY           MAG_AUTO_G     BITMAP           Y3A1_MAG_AUTO_G_BMX
+31  Y3A1_COADD_OBJECT_SUMMARY           MAG_AUTO_I     BITMAP           Y3A1_MAG_AUTO_I_BMX
+32  Y3A1_COADD_OBJECT_SUMMARY           MAG_AUTO_R     BITMAP           Y3A1_MAG_AUTO_R_BMX
+33  Y3A1_COADD_OBJECT_SUMMARY           MAG_AUTO_Y     BITMAP           Y3A1_MAG_AUTO_Y_BMX
+34  Y3A1_COADD_OBJECT_SUMMARY           MAG_AUTO_Z     BITMAP           Y3A1_MAG_AUTO_Z_BMX
+35  Y3A1_COADD_OBJECT_SUMMARY       MAG_DETMODEL_G     BITMAP       Y3A1_MAG_DETMODEL_G_BMX
+36  Y3A1_COADD_OBJECT_SUMMARY       MAG_DETMODEL_I     BITMAP       Y3A1_MAG_DETMODEL_I_BMX
+37  Y3A1_COADD_OBJECT_SUMMARY       MAG_DETMODEL_R     BITMAP       Y3A1_MAG_DETMODEL_R_BMX
+38  Y3A1_COADD_OBJECT_SUMMARY       MAG_DETMODEL_Y     BITMAP       Y3A1_MAG_DETMODEL_Y_BMX
+39  Y3A1_COADD_OBJECT_SUMMARY       MAG_DETMODEL_Z     BITMAP       Y3A1_MAG_DETMODEL_Z_BMX
+40  Y3A1_COADD_OBJECT_SUMMARY        MOLY_NUMBER_G     BITMAP       Y3A1_COS_MOLY_NUM_G_BMX
+41  Y3A1_COADD_OBJECT_SUMMARY        MOLY_NUMBER_I     BITMAP       Y3A1_COS_MOLY_NUM_I_BMX
+42  Y3A1_COADD_OBJECT_SUMMARY        MOLY_NUMBER_R     BITMAP       Y3A1_COS_MOLY_NUM_R_BMX
+43  Y3A1_COADD_OBJECT_SUMMARY        MOLY_NUMBER_Y     BITMAP       Y3A1_COS_MOLY_NUM_Y_BMX
+44  Y3A1_COADD_OBJECT_SUMMARY        MOLY_NUMBER_Z     BITMAP       Y3A1_COS_MOLY_NUM_Z_BMX
+45  Y3A1_COADD_OBJECT_SUMMARY       PFW_ATTEMPT_ID     BITMAP            Y3A1_COS_ATTID_BMX
+46  Y3A1_COADD_OBJECT_SUMMARY                   RA     NORMAL            Y3A1_COS_RADEC_BMX
+47  Y3A1_COADD_OBJECT_SUMMARY                   RA     BITMAP               Y3A1_COS_RA_BMX
+48  Y3A1_COADD_OBJECT_SUMMARY       SPREAD_MODEL_G     BITMAP       Y3A1_SPREAD_MODEL_G_BMX
+49  Y3A1_COADD_OBJECT_SUMMARY       SPREAD_MODEL_I     BITMAP       Y3A1_SPREAD_MODEL_I_BMX
+50  Y3A1_COADD_OBJECT_SUMMARY       SPREAD_MODEL_R     BITMAP       Y3A1_SPREAD_MODEL_R_BMX
+51  Y3A1_COADD_OBJECT_SUMMARY       SPREAD_MODEL_Y     BITMAP       Y3A1_SPREAD_MODEL_Y_BMX
+52  Y3A1_COADD_OBJECT_SUMMARY       SPREAD_MODEL_Z     BITMAP       Y3A1_SPREAD_MODEL_Z_BMX
+53  Y3A1_COADD_OBJECT_SUMMARY             TILENAME     BITMAP         Y3A1_COS_TILENAME_BMX
+54  Y3A1_COADD_OBJECT_SUMMARY       WAVG_MAG_PSF_G     BITMAP       Y3A1_WAVG_MAG_PSF_G_BMX
+55  Y3A1_COADD_OBJECT_SUMMARY       WAVG_MAG_PSF_I     BITMAP       Y3A1_WAVG_MAG_PSF_I_BMX
+56  Y3A1_COADD_OBJECT_SUMMARY       WAVG_MAG_PSF_R     BITMAP       Y3A1_WAVG_MAG_PSF_R_BMX
+57  Y3A1_COADD_OBJECT_SUMMARY       WAVG_MAG_PSF_Y     BITMAP       Y3A1_WAVG_MAG_PSF_Y_BMX
+58  Y3A1_COADD_OBJECT_SUMMARY       WAVG_MAG_PSF_Z     BITMAP       Y3A1_WAVG_MAG_PSF_Z_BMX
+59  Y3A1_COADD_OBJECT_SUMMARY  WAVG_SPREAD_MODEL_G     BITMAP  Y3A1_WAVG_SPREAD_MODEL_G_BMX
+60  Y3A1_COADD_OBJECT_SUMMARY  WAVG_SPREAD_MODEL_I     BITMAP  Y3A1_WAVG_SPREAD_MODEL_I_BMX
+61  Y3A1_COADD_OBJECT_SUMMARY  WAVG_SPREAD_MODEL_R     BITMAP  Y3A1_WAVG_SPREAD_MODEL_R_BMX
+62  Y3A1_COADD_OBJECT_SUMMARY  WAVG_SPREAD_MODEL_Y     BITMAP  Y3A1_WAVG_SPREAD_MODEL_Y_BMX
+63  Y3A1_COADD_OBJECT_SUMMARY  WAVG_SPREAD_MODEL_Z     BITMAP  Y3A1_WAVG_SPREAD_MODEL_Z_BMX
+
+</code></pre>
+</section>
+
+<section>
+<h3>Other useful commands</h3>
+<ul>
+<li><h4> clear <br /><span style="font-size:0.6em"> Clears the screen </span></h4></li>
+<li><h4> edit <br />
+<span style="font-size:0.6em"> Opens up an editor window to write a query </span></h4></li>
+<li><h4> exit (or quit, or ^D) <br>
+<span style="font-size:0.6em"> Saves changes and history, and then exits easyaccess</span></h4></li>
+<li><h4> history <br>
+<span style="font-size:0.6em"> Prints the history of the commands prompted</span></h4></li>
+<li><h4> shell (or !{command}) <br>
+<span style="font-size:0.6em"> Use shell commands inside easyaccess, e.g. DESDM ~> shell pwd, or DESDM ~> !pwd</span></h4></li>
+<li><h4> prefetch <br />
+<span style="font-size:0.6em"> Shows, sets, or sets to default the number of prefetch rows from Oracle</span></h4></li>
+</ul>
+</section>
+</section>

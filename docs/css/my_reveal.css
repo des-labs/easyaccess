@@ -1,0 +1,57 @@
+
+html{overflow-y:scroll;}
+.reveal .footerL {
+  position: fixed;
+  bottom: -15px;
+  left: 35%;
+  font-size: 0.35em;
+  z-index: 100;
+}
+.reveal .footerR {
+  position: fixed;
+  bottom: -15px;
+  right: 35%;
+  font-size: 0.35em;
+  z-index: 100;
+}
+
+.mygold {
+    color: salmon;
+}
+
+
+ul.myitems {
+    list-style-type: circle;
+}
+
+.myitems li {
+    font-family: 'Roboto', 'noto', sans-serif;
+}
+
+
+img[alt=test2] { width: 100px; border: 0px }
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.reveal h1 { font-family: 'Roboto', 'noto', sans-serif; }
+.reveal h2 { font-family: 'Roboto', 'noto', sans-serif; }
+.reveal h3 { font-family: 'Roboto', 'noto', sans-serif; }
+.reveal h4 { font-family: 'Roboto', 'noto', sans-serif; }
+.reveal h5 { font-family: 'Roboto', 'noto', sans-serif; }
+.reveal h6 { font-family: 'Roboto', 'noto', sans-serif; }
+
+
+h1.mytitle{
+    color: #66BB6A;
+}
+
+h2.mytitle{
+    color: #66BB6A;
+}

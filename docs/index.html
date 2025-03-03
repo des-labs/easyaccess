@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Easyaccess tutorial</title>
+    <link rel="stylesheet" href="./lib/reveal.js/css/reveal.css">
+    <!--
+    <link rel="stylesheet" href="./lib/reveal.js/css/theme/night.css" id="theme">
+    -->
+    <link rel="stylesheet" href="./css/des-theme.css" id="theme">
+    <link rel="stylesheet" href="./lib/highlight.js/src/styles/railscasts.css">
+    <link rel="stylesheet" href="./lib/font-awesome-4.5.0/css/font-awesome.css">
+    <link rel="stylesheet" href="./lib/font-mfizz/dist/font-mfizz.css">
+    <link rel="stylesheet" href="./css/my_reveal.css">
+
+    <!--Add support for earlier versions of Internet Explorer -->
+</head>
+
+<body>
+<div class="reveal">
+    <!-- FOOTER -->
+    <div class="footerL">
+    <p> <a href="http://matias-ck.com/">Matias Carrasco Kind</a> // <a href="http://deslabs.ncsa.illinois.edu/">DES Labs at NCSA</a></div>
+    <div class="footerR">
+    <p> easyaccess tutorial -- <i>Installation and Documentation</i> </div>
+
+<div class="slides">
+<!-- TITLE PAGE -->
+<section data-menu-title="Home" id="Home">
+<h1>
+<p><img src="images/desdm_figures/logo.png" style="border: 0; vertical-align: text-bottom; width:12%"> easyaccess</p>
+</h1>
+<h3><i>Installation and Documentation</i></h3><br><br><br>
+<p class="mygold">Matias Carrasco Kind</p>
+<p class="mygold"><a href="http://deslabs.ncsa.illinois.edu/">DES Labs at NCSA</a></p>
+</section>
+
+<!-- fix to load markdown render anf highlight.js-->
+<div data-markdown></div>
+<div style="display: none"><pre><code></pre></code></div>
+<!-- SLIDES -->
+<div class="slides" data-external="./slides/introduction.html"> </div>
+<div class="slides" data-external="./slides/motivation.html"> </div>
+<div class="slides" data-external="./slides/features.html"> </div>
+<div class="slides" data-external="./slides/simple_logo.html"> </div>
+<div class="slides" data-external="./slides/installation.html"> </div>
+<div class="slides" data-external="./slides/files.html"> </div>
+<div class="slides" data-external="./slides/usage.html"> </div>
+<div class="slides" data-external="./slides/special_usage.html"> </div>
+<div class="slides" data-external="./slides/commands.html"> </div>
+<div class="slides" data-external="./slides/python_api.html"> </div>
+<div class="slides" data-external="./slides/arch.html"> </div>
+<div class="slides" data-external="./slides/citation.html"> </div>
+<div class="slides" data-external="./slides/conclusions.html"> </div>
+<div class="slides" data-external="./slides/links.html"> </div>
+</div>
+</div>
+<script src="./lib/reveal.js/lib/js/head.min.js"></script>
+<script src="./lib/reveal.js/js/reveal.js"></script>
+
+<script>
+    // Required, even if empty.
+    Reveal.initialize({
+	controls: true,
+	slideNumber: true,
+    progress: true,
+    history : true,
+    touch : true,
+    width: '100%',
+    height: '97%',
+    center: false,
+
+    dependencies: [
+			{ src: './lib/reveal.js/plugin/external/external.js', async:false, condition: function() { return !!document.querySelector( '[data-external]' ); }},
+			{ src: './lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: './lib/reveal.js/plugin/markdown/marked.js', async: false,condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: './lib/reveal.js/plugin/markdown/markdown.js', async: false,condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: './lib/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: './lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+			{ src: './lib/reveal.js/plugin/reveal.js-menu/menu.js'},
+			{ src: './lib/reveal.js/plugin/notes/notes.js', async: true },
+			//{ src: './lib/reveal.js/plugin/title-footer/title-footer.js', async: true,  callback: function() {
+            //    title_footer.initialize('easyaccess tutorial -- Matias CK','rgba(150,150,150,0.1)'); } }
+        ],
+    markdown: {
+		smartypants: false,
+        breaks: true
+	},
+    menu: {
+        numbers: false,
+        titleSelector: 'h1, h2, h3, h4, h5, h6',
+        themes: [
+		{ name: 'White', theme: 'des-theme-white.css' },
+		{ name: 'Black', theme: 'des-theme.css' },
+	    ],
+
+    },
+		});
+</script>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+ if( window.location.search.match( /print-pdf/gi ) ) {
+   var link = document.createElement( 'link' );
+   link.rel = 'stylesheet';
+   link.type = 'text/css';
+   link.href = './lib/reveal.js/css/print/pdf.css';
+   document.getElementsByTagName( 'head' )[0].appendChild( link );
+ }
+</script>
+</body>
+</html>

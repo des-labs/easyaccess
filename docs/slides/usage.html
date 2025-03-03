@@ -1,0 +1,25 @@
+<style>
+#Usage .warning {
+    color: #9F6000;
+    border-radius: 10px;
+    background-color: #FEEFB3;
+    font-size: 15x;
+    display:inline-block;
+    padding-left: 10px;
+    padding-right:  10px;
+}
+
+#Usage .commands {
+    color: cornflowerblue;
+    font-size: 0.9em;
+}
+
+</style>
+<section data-menu-title="Usage" id="Usage">
+<h2> Basic usage </h2>
+<p class="commands">DESDM ~> SELECT ... FROM ... WHERE ... ; > _optional_output_file</p>
+<div class="warning">  ( Don't forget the ";" after the query  )</div>
+<pre style="margin-top: 10px; margin-bottom: 0px; display:inline-block;"><code class='SQL'>select COADD_OBJECTS_ID, RA, DEC, MAG_AUTO_G, TILENAME from MCARRAS2.MINI_Y1A1 where rownum < 11;
+</code></pre>
+<img src="images/demo1.gif" width=40% style="border:0">
+</section>
