@@ -17,4 +17,4 @@ Here we collect a list of FAQ related to installation, usage, etc. Please refer 
 - **Q: Are there other requirements besides python modules and Oracle clients?**
   - A: Usually not, for new OS or Virtual Machines you'd need to install `libaio` and `libbz2`.
 - **Q: How can I contribute to the project?**
-  - A: Contributions are welcome! Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) and [Contribution guide](CONTRIBUTING.md).
+  - A: Contributions are welcome! Please take a look at our [Contribution guide](CONTRIBUTING.md).

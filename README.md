@@ -45,7 +45,7 @@ We have a running list of [FAQ](FAQ.md) which we will constantly update, please 
 
 ## Contributing
 
-Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) and our [contribution guide](CONTRIBUTING.md).
+Please take a look at our [contribution guide](CONTRIBUTING.md).
 
 ## Citation
 
