@@ -15,13 +15,6 @@
 
 `easyaccess` is an enhanced command line interpreter and Python package created to facilitate access to astronomical catalogs stored in SQL Databases. It provides a custom interface with custom commands and was specifically designed to access data from the Dark Energy Survey Oracle database, including autocompletion of tables, columns, users and commands, simple ways to upload and download tables using csv, fits and HDF5 formats, iterators, search and description of tables among others. It can easily be extended to another surveys or SQL databases. The package was completely written in Python and support customized addition of commands and functionalities.
 
-## DES DR1/DR2 access quickstart
-
-To access the DES public data releases, you first need an account, which you can register yourself [here](https://des.ncsa.illinois.edu/desaccess). Once you have login credentials for the public DES data server, you can start `easyaccess` with:
-
-```bash
-easyaccess -s desdr
-```
 For a short tutorial check [here](https://des-labs.github.io/easyaccess).
 
 ## Features
@@ -77,40 +70,7 @@ Installing `easyaccess` can be a little bit tricky given the external libraries 
 
 ### Docker
 
-Running `easyaccess` in Docker is easy. Execute the command below to download and run our published image.
-
-```bash
-$ docker run -it --rm \
-    hub.ncsa.illinois.edu/des-public/easyaccess:latest \
-    easyaccess -s desdr
-
-Enter username : 
-Enter password : 
-Connecting to DB ** desdr ** ...
-Loading metadata into cache...
-     _______      
-     \      \      
-  // / .    .\    
- // /   .    _\   
-// /  .     / // 
-\\ \     . / //  
- \\ \_____/ //   
-  \\_______//    DARK ENERGY SURVEY
-   `-------`     DATA MANAGEMENT
-
-easyaccess x.y.z. The DESDM Database shell.
-_________
-DESDR ~> SELECT RA, DEC, MAG_AUTO_G, TILENAME FROM DR2_MAIN sample(0.001) FETCH FIRST 5 ROWS ONLY ;
-
-         RA        DEC  MAG_AUTO_G      TILENAME
-1  8.236249 -24.021460   24.450422  DES0032-2415
-2  8.084798 -25.715401   26.279263  DES0033-2541
-3  8.142266 -35.854926   26.509785  DES0032-3540
-4  8.197418 -48.274010   25.243387  DES0030-4831
-5  8.107404 -26.313876   24.758778  DES0032-2623
-```
-
-Alternatively, you may build and run the image yourself using the included Dockerfile with the commands:
+Build and run the Docker image using the included Dockerfile with the commands:
 
 ```bash
 docker build -t des-easyaccess .
